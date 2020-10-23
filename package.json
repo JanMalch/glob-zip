@@ -1,0 +1,44 @@
+{
+  "name": "glob-zip",
+  "version": "1.0.0",
+  "description": "Create zip files based on glob patterns",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "test": "exit 0",
+    "prettier": "prettier --write *.js",
+    "start": "node cli out.zip *.js -vdw",
+    "start:help": "node cli --help"
+  },
+  "bin": {
+    "glob-zip": "cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanMalch/glob-zip.git"
+  },
+  "keywords": [
+    "zip",
+    "glob",
+    "CLI"
+  ],
+  "author": "JanMalch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JanMalch/glob-zip/issues"
+  },
+  "homepage": "https://github.com/JanMalch/glob-zip#readme",
+  "dependencies": {
+    "adm-zip": "^0.4.16",
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
+    "glob": "^7.1.6"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true
+  }
+}
