@@ -95,14 +95,20 @@ const prettyPrintSrcDest = (src, dest) => {
   );
 };
 
+const errorHandler = (e) => {
+  if (e != null) {
+    console.error('error:', e.message);
+    process.exit(1);
+  }
+}
+
 try {
   globZip({
     ...program,
     outFile: output,
     globPatterns,
     fileInfoCallback: process.env.VERBOSE ? prettyPrintSrcDest : undefined,
-  });
+  }, errorHandler);
 } catch (e) {
-  console.error('error:', e.message);
-  process.exit(1);
+  errorHandler(e);
 }

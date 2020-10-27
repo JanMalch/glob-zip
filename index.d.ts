@@ -10,5 +10,5 @@ export interface GlobZipOptions {
  fileInfoCallback?: (src: string, dest: string) => void;
 }
 
-export declare function globZip(options: GlobZipOptions, callback?: () => void);
+export declare function globZip(options: GlobZipOptions, callback?: (error?: any) => void);
 
