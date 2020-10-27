@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const AdmZip = require('adm-zip');
 
-
 module.exports.globZip = function (
   {
     outFile,
@@ -14,8 +13,7 @@ module.exports.globZip = function (
     wrap,
     dryRun,
     lift,
-    fileInfoCallback = () => {
-    },
+    fileInfoCallback = () => {},
   },
   callback = () => {}
 ) {

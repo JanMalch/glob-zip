@@ -33,9 +33,15 @@ program
   .on('--help', () => {
     console.log('');
     console.log('Examples:');
-    console.log('  $ glob-zip out.zip *.json                              # easiest usage');
-    console.log('  $ glob-zip out.zip *.json "sp ace.txt" *.js            # three glob patterns');
-    console.log('  $ glob-zip out.zip src/**/*.js --wrap backup --lift 1  # effectively renames "src" to "backup" in zip');
+    console.log(
+      '  $ glob-zip out.zip *.json                              # easiest usage'
+    );
+    console.log(
+      '  $ glob-zip out.zip *.json "sp ace.txt" *.js            # three glob patterns'
+    );
+    console.log(
+      '  $ glob-zip out.zip src/**/*.js --wrap backup --lift 1  # effectively renames "src" to "backup" in zip'
+    );
   })
   .option(
     '-w, --wrap [name]',
@@ -47,7 +53,11 @@ program
     (v) => parseInt(v, 10),
     0
   )
-  .option('-a, --append', 'Appends to the specified outFile if present. If not, a file with the same name would be removed.', false)
+  .option(
+    '-a, --append',
+    'Appends to the specified outFile if present. If not, a file with the same name would be removed.',
+    false
+  )
   .option('-F, --no-fail', 'Do not fail when zip would be empty', false)
   .option('-E, --no-empty', 'Do not include empty directories', false)
   .option('-d, --dry-run', 'Do not write or delete any files', false)
@@ -87,11 +97,10 @@ const prettyPrintSrcDest = (src, dest) => {
     chalk.blue(dest.endsWith(path.sep) ? 'empty dir:' : 'file:'),
     chalk.gray(srcCwdPart) + chalk.green(srcFilePart),
     '->',
-    (
-      chalk.gray(destCwdPart + path.sep) +
-      destFilePart + path.sep +
+    chalk.gray(destCwdPart + path.sep) +
+      destFilePart +
+      path.sep +
       chalk.green(dest.startsWith(path.sep) ? dest.substring(1) : dest)
-    )
   );
 };
 
@@ -100,16 +109,19 @@ const errorHandler = (e) => {
     console.error('error:', e.message);
     process.exit(1);
   }
-}
+};
 
 try {
-  globZip({
-    ...program,
-    failIfEmpty: program.fail,
-    outFile: output,
-    globPatterns,
-    fileInfoCallback: process.env.VERBOSE ? prettyPrintSrcDest : undefined,
-  }, errorHandler);
+  globZip(
+    {
+      ...program,
+      failIfEmpty: program.fail,
+      outFile: output,
+      globPatterns,
+      fileInfoCallback: process.env.VERBOSE ? prettyPrintSrcDest : undefined,
+    },
+    errorHandler
+  );
 } catch (e) {
   errorHandler(e);
 }
