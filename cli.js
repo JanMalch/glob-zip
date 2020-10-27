@@ -105,6 +105,7 @@ const errorHandler = (e) => {
 try {
   globZip({
     ...program,
+    failIfEmpty: program.fail,
     outFile: output,
     globPatterns,
     fileInfoCallback: process.env.VERBOSE ? prettyPrintSrcDest : undefined,

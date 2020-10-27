@@ -9,7 +9,7 @@ module.exports.globZip = function (
     outFile,
     globPatterns: _globPatterns,
     append,
-    fail: failIfZipEmpty,
+    failIfEmpty,
     empty: includeEmptyDirectories,
     wrap,
     dryRun,
@@ -73,7 +73,7 @@ module.exports.globZip = function (
       }
     });
 
-    if (failIfZipEmpty && zip.getEntries().length === 0) {
+    if (failIfEmpty && zip.getEntries().length === 0) {
       callback(new Error('no files found'));
       return;
     }

@@ -19,7 +19,7 @@ export interface GlobZipOptions {
  /**
   * If set to `true`, the function will fail, if the resulting zip would be empty.
   */
- fail?: boolean;
+ failIfEmpty?: boolean;
  /**
   * If set to `true`, empty directories will be included in the zip.
   */
