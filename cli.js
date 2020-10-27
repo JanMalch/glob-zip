@@ -21,11 +21,9 @@ function resolveWrap(value) {
   }
 }
 
-// FIXME: change argument usage to "glob-zip [options] <outFile> <pattern> [patterns...]"
-
 program
   .name('glob-zip')
-  .arguments('<outFile> [globPattern]')
+  .arguments('<outFile> <globPatterns...>')
   .on('option:verbose', function () {
     process.env.VERBOSE = this.verbose;
   })
@@ -36,16 +34,15 @@ program
     console.log('');
     console.log('Examples:');
     console.log('  $ glob-zip out.zip *.json                              # easiest usage');
-    console.log('  $ glob-zip out.zip *.json --glob="sp ace.txt" -g *.js      # three glob patterns');
+    console.log('  $ glob-zip out.zip *.json "sp ace.txt" *.js            # three glob patterns');
     console.log('  $ glob-zip out.zip src/**/*.js --wrap backup --lift 1  # effectively renames "src" to "backup" in zip');
   })
-  .option('-g, --glob <pattern>', 'Add a glob pattern', addGlobPattern)
   .option(
     '-w, --wrap [name]',
     'Define the root path within the zip, defaults to current directory name if flag is present without value'
   )
   .option(
-    '-l, --lift <depth>',
+    '-l, --lift [depth]',
     'Lift files the given amount of directories for the path in the zip',
     (v) => parseInt(v, 10),
     0
@@ -56,9 +53,11 @@ program
   .option('-d, --dry-run', 'Do not write or delete any files', false)
   .option('-v, --verbose', 'Use verbose output', false)
   .version(pkg.version)
-  .action((outFile, globPattern) => {
+  .action((outFile, globPatterns) => {
     output = path.resolve(outFile);
-    addGlobPattern(globPattern);
+    for (const globPattern of globPatterns) {
+      addGlobPattern(globPattern);
+    }
   });
 
 program.parse(process.argv);

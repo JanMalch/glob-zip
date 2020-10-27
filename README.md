@@ -16,22 +16,21 @@ npm i -g glob-zip
 ```
 $ glob-zip --help
 
-Usage: glob-zip [options] <outFile> [globPattern]
+Usage: glob-zip [options] <outFile> <globPatterns...>
 
 Options:
-  -V, --version         output the version number
-  -g, --glob <pattern>  Add a glob pattern
-  -a, --append          Appends to the specified outFile if present (default: false)
-  -l, --lift <depth>    Lift files the given amount of directories for the path in the zip (default: 0)
-  -w, --wrap [name]     Define the root path within the zip, defaults to current directory name if flag is present without value
-  -F, --no-fail         Do not fail when zip would be empty
-  -E, --no-empty        Do not include empty directories
-  -d, --dry-run         Do not write the final zip (default: false)
-  -v, --verbose         Use verbose output (default: false)
-  -h, --help            display help for command
+  -w, --wrap [name]   Define the root path within the zip, defaults to current directory name if flag is present without value
+  -l, --lift [depth]  Lift files the given amount of directories for the path in the zip (default: 0)
+  -a, --append        Appends to the specified outFile if present. If not, a file with the same name would be removed. (default: false)
+  -F, --no-fail       Do not fail when zip would be empty
+  -E, --no-empty      Do not include empty directories
+  -d, --dry-run       Do not write or delete any files (default: false)
+  -V, --verbose       Use verbose output (default: false)
+  -v, --version       output the version number
+  -h, --help          display help for command
 
 Examples:
   $ glob-zip out.zip *.json                              # easiest usage
-  $ glob-zip out.zip -g *.json -g *.js                   # multiple glob patterns
+  $ glob-zip out.zip *.json "sp ace.txt" *.js            # three glob patterns
   $ glob-zip out.zip src/**/*.js --wrap backup --lift 1  # effectively renames "src" to "backup" in zip
 ```
