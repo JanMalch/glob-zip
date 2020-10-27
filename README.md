@@ -13,6 +13,8 @@ npm i -g glob-zip
 
 ## Usage
 
+The library is intended for CLI usage:
+
 ```
 $ glob-zip --help
 
@@ -33,4 +35,21 @@ Examples:
   $ glob-zip out.zip *.json                              # easiest usage
   $ glob-zip out.zip *.json "sp ace.txt" *.js            # three glob patterns
   $ glob-zip out.zip src/**/*.js --wrap backup --lift 1  # effectively renames "src" to "backup" in zip
+```
+
+You can also use it programmatically:
+
+```js
+const globZip = require('glob-zip');
+
+globZip({
+  outFile: 'out.zip',
+  globPatterns: ['src/**/*.js', '*.json'],
+}, (err) => {
+  if (err != null) {
+    console.error('Failed to write ZIP', err);
+  } else {
+    console.log('ZIP file ready!');
+  }
+});
 ```
