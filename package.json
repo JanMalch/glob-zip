@@ -6,9 +6,10 @@
   "typings": "index.d.ts",
   "scripts": {
     "test": "exit 0",
-    "prettier": "prettier --write *.js",
+    "prettier": "prettier --write *.{js,ts,json,md}",
     "start": "node cli out.zip *.js -Vdw",
-    "start:help": "node cli --help"
+    "start:help": "node cli --help",
+    "release": "standard-version"
   },
   "bin": {
     "glob-zip": "cli.js"
@@ -35,10 +36,70 @@
     "glob": "^7.1.6"
   },
   "devDependencies": {
-    "prettier": "^2.1.2"
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.0",
+    "prettier": "^2.1.2",
+    "standard-version": "^9.0.0"
   },
   "prettier": {
     "trailingComma": "es5",
     "singleQuote": true
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md}": "prettier --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --relative --concurrent=1",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "standard-version": {
+    "header": "",
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "hidden": true
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "section": "Code Refactoring"
+      },
+      {
+        "type": "perf",
+        "section": "Performance Improvements"
+      },
+      {
+        "type": "test",
+        "hidden": true
+      },
+      {
+        "type": "build",
+        "hidden": true
+      }
+    ]
   }
 }
