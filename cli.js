@@ -51,8 +51,8 @@ program
   .option('-F, --no-fail', 'Do not fail when zip would be empty', false)
   .option('-E, --no-empty', 'Do not include empty directories', false)
   .option('-d, --dry-run', 'Do not write or delete any files', false)
-  .option('-v, --verbose', 'Use verbose output', false)
-  .version(pkg.version)
+  .option('-V, --verbose', 'Use verbose output', false)
+  .version(pkg.version, '-v, --version')
   .action((outFile, globPatterns) => {
     output = path.resolve(outFile);
     for (const globPattern of globPatterns) {

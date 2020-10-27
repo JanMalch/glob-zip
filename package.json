@@ -7,7 +7,7 @@
   "scripts": {
     "test": "exit 0",
     "prettier": "prettier --write *.js",
-    "start": "node cli out.zip *.js -vdw",
+    "start": "node cli out.zip *.js -Vdw",
     "start:help": "node cli --help"
   },
   "bin": {
