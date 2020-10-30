@@ -1,7 +1,6 @@
-# glob-zip <a href="https://www.github.com/JanMalch/glob-zip"><img src="https://user-images.githubusercontent.com/25508038/63974103-75242700-caac-11e9-8ca4-71cc5b905e90.png" width="90" height="90" align="right"></a>
+# glob-zip <a href="https://www.github.com/JanMalch/glob-zip"><img src="https://user-images.githubusercontent.com/25508038/97730414-1acd8e80-1ad4-11eb-8fc5-4c2952cf5c31.png" width="90" height="90" align="right"></a>
 
-[![npm](https://badgen.net/bpm/v/glob-zip)](https://www.npmjs.com/package/glob-zip)
-[![Build](https://github.com/JanMalch/glob-zip/workflows/Build/badge.svg)](https://github.com/JanMalch/glob-zip/workflows/Build)
+[![npm](https://img.shields.io/npm/v/glob-zip)](https://www.npmjs.com/package/glob-zip)
 
 _Create zip files based on glob patterns._
 
